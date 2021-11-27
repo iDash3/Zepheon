@@ -1,22 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import SquaredButton from "./components/SquaredButton";
 
 function App() {
+  const [color, setColor] = useState(0);
+  const colors = ["#ee7b6c", "#007eac", "#003249", "#090C08"];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <header className="App-header" style={{ backgroundColor: colors[color] }}>
+        <p>Zepheon</p>
+        <div
+          style={{
+            display: "flex",
+          }}
         >
-          Learn React
-        </a>
+          {colors.map((color, colorIdx) => (
+            <SquaredButton color={color} onClick={() => setColor(colorIdx)} />
+          ))}
+        </div>
       </header>
     </div>
   );
